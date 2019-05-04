@@ -1,0 +1,198 @@
+<!--
+@BuradaVivek
+@vivekburada97@gmail.com
+@This project is built for UpGrad
+Date 4th May
+-->
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Wishlists!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/landing.css">
+</head>
+<body onload="toggle();">
+  <div class="lightbox-blanket">
+    <div class="pop-up-container">
+      <div class="pop-up-container-vertical">
+        <div class="pop-up-wrapper">
+          <div class="go-back" onclick="GoBack();"><i class="fa fa-arrow-left"></i>
+          </div>
+          <div class="product-details">
+            <div class="product-left">
+              <div class="product-info">
+
+                <div class="product-title">
+                  Buy latest Bags from us
+                </div>
+                <div class="product-price" price-data="320.03">
+
+                </div>
+              </div>
+              <div class="product-image">
+                <img src="https://rukminim1.flixcart.com/image/832/832/jh0vb0w0/laptop-bag/2/d/u/17-inch-expandable-laptop-backpack-17-inch-expandable-laptop-original-imaf53w6fzyav8na.jpeg?q=70" />
+              </div>
+            </div>
+            <div class="product-right">
+              <div class="product-description">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              </div>
+              <div class="product-available">
+                In stock. <span class="product-extended"><a href="#">Buy Extended Warranty</a></span>
+              </div>
+
+
+              </div>
+              <div class="product-quantity">
+                <label for="product-quantity-input" class="product-quantity-label">Quantity</label>
+                <div class="product-quantity-subtract">
+                  <i class="fa fa-chevron-left"></i>
+                </div>
+                <div>
+                  <input type="text" id="product-quantity-input" placeholder="0" value="0" />
+                </div>
+                <div class="product-quantity-add">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+            <div class="product-bottom">
+              <div class="product-checkout">
+                Total Price
+                <div class="product-checkout-total">
+                  <i class="fa fa-inr"></i>
+                  <div class="product-checkout-total-amount">
+                    0.00
+                  </div>
+                </div>
+              </div>
+              <div class="product-checkout-actions">
+                <a class="add-to-cart" href="#" onclick="AddToCart(event);">Add to Wishlist</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="random-background">
+    <div class="container">
+      <input type="text" maxlength= "12"       id="searchloop"      placeholder="Search..." class="searchbar">
+    </div>
+    <div class="itemlist">
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(1);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+
+              <div class="product-title" id="name-1" item-data="1" data-value="LOUIS CARON Stylish 15.6 waterproof Backpack">
+              LOUIS CARON Stylish 15.6 waterproof Backpack
+              </div>
+              <div class="product-price" id="" price-data="INR 399" item-data="1">
+                INR 399<span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="1">
+              <img src="https://rukminim1.flixcart.com/image/832/832/jh0vb0w0/laptop-bag/2/d/u/17-inch-expandable-laptop-backpack-17-inch-expandable-laptop-original-imaf53w6fzyav8na.jpeg?q=70" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(2);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+
+              <div class="product-title" item-data="2" data-value="American Tourister Fizz Sch Bag">
+                American Tourister Fizz Sch Bag
+              </div>
+              <div class="product-price" price-data="INR 1150" item-data="2">
+                INR 1150<span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="2">
+              <img src="https://rukminim1.flixcart.com/image/200/200/jggv53k0/backpack/m/k/z/amt-fizz-sch-bag-02-black-ff9-0-09-002-backpack-american-original-imaf4ghyfkaucydj.jpeg?q=90" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(3);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+
+              <div class="product-title" item-data="3" data-value="Skybags Brat 4 Backpack">
+              Skybags Brat 4 Backpack
+              </div>
+              <div class="product-price" price-data="INR 663" item-data="3">
+                INR 663<span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="3">
+              <img src="https://rukminim1.flixcart.com/image/832/832/backpack/h/y/q/bpbra4blu-skybags-backpack-brat-4-original-imaebptpgwp4kcdz.jpeg?q=70" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(4);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+              <div class="product-title" item-data="4" data-value="ADIDAS LIN PER BP  Backpack">
+                ADIDAS LIN PER BP  Backpack
+              </div>
+              <div class="product-price" price-data="INR 1367" item-data="4">
+                INR 1367<span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="4">
+              <img src="https://rukminim1.flixcart.com/image/832/832/jsc3ssw0/backpack/a/j/h/lin-per-bp-dm7661-backpack-adidas-original-imafdwweybrxnfuv.jpeg?q=70" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(5);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+              <div class="product-title" item-data="5" data-value="Wildcraft Stanza 23 L Backpack">
+                Wildcraft Stanza 23 L Backpack
+              </div>
+              <div class="product-price" price-data="INR 839" item-data="5">
+                INR 839</span><span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="5">
+              <img src="https://rukminim1.flixcart.com/image/832/832/jn4x47k0/backpack/g/3/v/stanza-11894-backpack-wildcraft-original-imaf7qdcyjehwb6h.jpeg?q=70" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="itemlist-item-wrapper" onclick="OpenProduct(6);">
+        <div class="product-details">
+          <div class="">
+            <div class="product-info">
+              <div class="product-title" item-data="6" data-value=" Billion HiStorage 30 L Backpack">
+              Billion HiStorage 30 L Backpack
+              </div>
+              <div class="product-price" price-data="INR 697" item-data="6">
+                INR 697</span><span class="product-price-cents">00</span>
+              </div>
+            </div>
+            <div class="product-image" item-data="6">
+              <img src="https://rukminim1.flixcart.com/image/832/832/jhz5vgw0/backpack/x/p/c/historage-ba227-backpack-billion-original-imaf5vjhum6twd4h.jpeg?q=70" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script  src="js/landing.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!--
+@BuradaVivek
+@vivekburada97@gmail.com
+@This project is built for UpGrad
+Date 4th May
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>E commerce App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+<div class="container intro">
+  <div class="row intro">
+    <nav class="col-sm-3" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#intro">Introduction</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+    <div class="col-sm-9 intro">
+        <div class="jumbotron intro" id="intro">
+          <h1>UpGrad Assignment</h1>
+          <p>UpGrad is India's hottest online education startup. Equipped with US $15 million capital and a committed team around Ronnie Screwvala and Mayank Kumar, our mission is to empower individuals to reach their full professional potential in the most engaging learning environment. Our company is partnering with universities and corporates to unite academia and industry and bring education in India to the next level. With a lack of more than one million skilled individuals in areas such as big data and digital business management, we are creating postgraduate programs for working professionals in new-age, industry-relevant areas. Merging the latest technology, pedagogy, and services, we are creating an immersive student experience - anytime and anywhere.</p>
+          <p>
+          - I have used Cookies. Some Browsers doesn't support logging Cookies! <br/>
+          - Please Login and then Navigate, Some data is stored during the session.<br/>
+          - No Email validation is done please enter proper email hence Mail Server works<br/>
+          - Some UI is from OpenSource Codepens
+          - <br/>
+          </p>
+        </div>
+        <div class="jumbotron intro" id="register">
+            <h1>Sign Up</h1>
+          <form class="form-horizontal" action="">
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="username">Username:</label>
+              <div class="col-sm-7 forminp">
+                <input type="text" class="form-control" id="reg_username" placeholder="Enter your Email ID" name="username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="password">Password:</label>
+              <div class="col-sm-7 forminp">
+                <input type="password" class="form-control" id="reg_pwd" placeholder="Enter password" name="password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-5 col-sm-5 forminp">
+                <a class="btn btn-default btn-lg" onclick="register()">Submit</a>
+              </div>
+            </div>
+            <div class="form-group success" id="success">
+              <p>Operation Successful!</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="jumbotron intro" id="login">
+            <h1>Login</h1>
+          <form class="form-horizontal" action="">
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="username">Username:</label>
+              <div class="col-sm-7 forminp">
+                <input type="text" class="form-control" id="log_username" placeholder="Enter your Email ID" name="username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="password">Password:</label>
+              <div class="col-sm-7 forminp">
+                <input type="password" class="form-control" id="log_pwd" placeholder="Enter password" name="password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-5 col-sm-5 forminp">
+                <a class="btn btn-default btn-lg" onclick="login()">Submit</a>
+              </div>
+            </div>
+            <div class="form-group success" id="success-login">
+
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
