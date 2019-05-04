@@ -115,7 +115,7 @@ def list_cat():
     list=[]
     list.append(data["user"])
     print("---------MAIL MAN  : ",list,"---------------")
-    msg = Message('Hello', sender = 'rewardnxt@gmail.com', recipients = list)
+    msg = Message('Wishlist product', sender = 'rewardnxt@gmail.com', recipients = list)
     msg.body = "You have a Product : "+ data["name"] +"  of Quantity  "+data["quantity"] + "  Buy now at Total  : "+data["total"]+".   Clear Your Wishlist today!"
     mail.send(msg)
     print("------------MAILED SUCCESSFULLY --------------------")
