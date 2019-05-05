@@ -31,4 +31,4 @@ If DATABASE is not present then it only populates the database.
 
 **data.db** stores index of product and keyword dump.  
 
-Please mail me for any queries: ** vivekburada97@gmail.com **
+Please mail me for any queries: vivekburada97@gmail.com
