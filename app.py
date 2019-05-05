@@ -51,7 +51,7 @@ if result == None:
           VALUES (5, 'Wildcraft Stanza 23 L Backpack   (Grey)  Solid 23L Men  Women');''');
         search.execute(''' INSERT INTO DATA (ID,DUMP)
           VALUES (6, 'Billion HiStorage 30 L Backpack  (Black)  30L Black Men  Women');''');
-        
+
         print ("Table created successfully")
 
 else:
