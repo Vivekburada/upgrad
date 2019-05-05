@@ -6,7 +6,7 @@
 
 ```
  "select * from DATA where DUMP like ? order by RANDOM()",
-         ('%'+Keyword+'%',)"~~~~
+         ('%'+Keyword+'%',)"
 ```
 Here when ever we search for a Keyword for example bags that are "waterproof" , then above code searches that
 Columns that have words **LIKE**  "waterproof" and sends them. Column containing Keywords for the product are **case insensitive hence  waterproof, Waterproof WATerproof all points to same column that consists that keyword.  
