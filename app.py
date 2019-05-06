@@ -24,10 +24,11 @@ from flask_mail import Mail, Message
 @database initials
 '''
 
-user = sql.connect('user.db')
-search = sql.connect('data.db')
+
+
 
 # @BuradaVivek Test if DATA TABLE exits and populate if not
+search = sql.connect('data.db')
 search_table ="SELECT name FROM sqlite_master WHERE type='table' AND name='DATA';"
 cursor = search.execute(search_table)
 result = cursor.fetchone()
@@ -38,28 +39,46 @@ if result == None:
                  ID  INT  PRIMARY KEY   NOT NULL,
                  DUMP   TEXT   collate nocase  NOT NULL);
                  ''')
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-            VALUES (1, 'LOUIS CARON Stylish 15.6 waterproof laptop Backpack 25 L Backpack  (Red, Purple) Men  Women 15.6 17 18, 19 25 L 25L  Polyester');''');
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-         VALUES (2, 'American Tourister Fizz Sch Bag 32 L Backpack  (Black, Grey) 32L Men  Women');''');
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-          VALUES (3, 'Skybags Brat 4 Backpack  (Blue)
-                Front Stash Pocket, Mesh Bottle Holder at Side, Padded Handles, Dual Straps Fabric Lightweight');''');
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-         VALUES (4, 'ADIDAS LIN PER BP 15 L Backpack  (Blue) MYSINK / WHITE / WHITE 15L 15 L ');''');
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-          VALUES (5, 'Wildcraft Stanza 23 L Backpack   (Grey)  Solid 23L Men  Women');''');
-        search.execute(''' INSERT INTO DATA (ID,DUMP)
-          VALUES (6, 'Billion HiStorage 30 L Backpack  (Black)  30L Black Men  Women');''');
-
         print ("Table created successfully")
 
+        try:
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+                VALUES (1, 'LOUIS CARON Stylish 15.6 waterproof laptop Backpack 25 L Backpack  (Red, Purple) Men  Women 15.6 17 18, 19 25 L 25L  Polyester');''');
+            print("---------",1,"---------------")
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+             VALUES (2, 'American Tourister Fizz Sch Bag 32 L Backpack  (Black, Grey) 32L Men  Women');''');
+            print("---------",2,"---------------",)
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+              VALUES (3, 'Skybags Brat 4 Backpack  (Blue)
+                    Front Stash Pocket, Mesh Bottle Holder at Side, Padded Handles, Dual Straps Fabric Lightweight');''');
+            print("---------",3,"---------------")
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+             VALUES (4, 'ADIDAS LIN PER BP 15 L Backpack  (Blue) MYSINK / WHITE / WHITE 15L 15 L ');''');
+            print("---------",4,"---------------")
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+              VALUES (5, 'Wildcraft Stanza 23 L Backpack   (Grey)  Solid 23L Men  Women');''');
+            print("---------",5,"---------------")
+            search.execute(''' INSERT INTO DATA (ID,DUMP)
+              VALUES (6, 'Billion HiStorage 30 L Backpack  (Black)  30L Black Men  Women');''');
+            print("---------",6,"---------------")
+            search.commit()
+            print("TOTAL INSERTED SUCCESSFULLY",search.total_changes,"--------------")
+
+        except (sqlite.OperationalError, msg):
+            print("Error")
+        query = "SELECT * FROM DATA;"
+        cursor = search.execute(query)
+        result = cursor.fetchall()
+        for row in result:
+                 print("INSERTED--------------",row[1])
 else:
         print ("-----------------DATABASE PRESENT :  DATA-----------------")
+search.close()
 
 
 
 # @BuradaVivek Test if USER TABLE exits and populate if not
+user = sql.connect('user.db')
 user_table ="SELECT name FROM sqlite_master WHERE type='table' AND name='USER';"
 cursor = user.execute(user_table)
 result = cursor.fetchone()
@@ -76,7 +95,7 @@ if result == None:
 
 else:
         print ("-----------------DATABASE PRESENT: USER-----------------")
-
+user.close()
 
 
 '''
