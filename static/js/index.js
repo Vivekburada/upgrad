@@ -8,6 +8,7 @@ Date 4th May
 
 var link="http://0.0.0.0:5000";
 
+
 function checkmail(email)
 {
   if(1)
@@ -39,8 +40,6 @@ flag=1
       console.log(this.status);
       if (this.status==200)
       {
-       setCookie("user", username, 30);
-       console.log(getCookie("user"),"--COOKIE  --");
         var success=document.getElementById('success-login');
         success.innerHTML='Login Successful : <a href="landing.html">Click here to launch Main page</a>'
         success.style.display="block";
@@ -74,7 +73,6 @@ flag=1
         {
           var success=document.getElementById('success');
           success.innerHTML="User successfully created please login to continue!";
-
           success.style.display="block";
         }else{
         var success=document.getElementById('success');
@@ -95,6 +93,8 @@ flag=1
 @BuradaVivek
 @This handles Cookies
 */
+
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));

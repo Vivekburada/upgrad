@@ -10,7 +10,9 @@ var link="http://0.0.0.0:5000";
 
 var item = {user:null,name:null, price:0, quantity:0, total:0,url:null}
 item.user = getCookie("user")
+console.log(getCookie('user'))
 console.log(item);
+
 function toggle(){
 $(".lightbox-blanket").toggle();
 }
@@ -145,8 +147,10 @@ function AddToCart(e){
 
     return;}
 
-    console.log(item)
 
+
+    item.user = getCookie('user')
+    console.log(item)
     mail(item)
 
   var toast = '<div class="toast toast-success">Added '+ qty +' to Wishlist.</div>';
@@ -193,7 +197,7 @@ function mail(item){
 
 function logout(){
 
-  setCookie("user", username, -999999);
+  setCookie("user", "", -999999);
 /*
   var url=link+"/api/v1/users/logout";
   var xhttp=new XMLHttpRequest();
@@ -273,16 +277,15 @@ function validate(e) {
 @BuradaVivek
 @This handles Cookies
 */
-/*
-@BuradaVivek
-@This handles Cookies
-*/
+
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   var expires = "expires="+ d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);

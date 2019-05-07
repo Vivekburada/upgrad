@@ -7,8 +7,8 @@
 @This project is built for UpGrad
 """
 
-
-from flask import Flask, jsonify,abort,session
+import os
+from flask import Flask, jsonify,abort,session,render_template
 import time
 import hashlib
 import re
@@ -18,20 +18,19 @@ from flask_cors import CORS,cross_origin
 import random
 import sqlite3 as sql
 from flask_mail import Mail, Message
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
+
 
 '''
 @BuradaVivek
 @database initials
 '''
-
-
-
-
 # @BuradaVivek Test if DATA TABLE exits and populate if not
 search = sql.connect('data.db')
 search_table ="SELECT name FROM sqlite_master WHERE type='table' AND name='DATA';"
 cursor = search.execute(search_table)
 result = cursor.fetchone()
+
 if result == None:
         print ("-----------------DATABASE CREATION  : DATA-----------------")
         search.execute('''CREATE TABLE DATA
@@ -70,7 +69,7 @@ if result == None:
         cursor = search.execute(query)
         result = cursor.fetchall()
         for row in result:
-                 print("INSERTED--------------",row[1])
+                 print("INSERTED--------------",row[0],"=========>",row[1])
 else:
         print ("-----------------DATABASE PRESENT :  DATA-----------------")
 search.close()
@@ -98,18 +97,33 @@ else:
 user.close()
 
 
-'''
-@BuradaVivek
-@This is flask mail Component
-
-'''
 
 
-app = Flask(__name__)
+
+
+app = Flask(__name__, template_folder='templates')
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = ''
+app.config['SECRET_KEY'] = "lkkajdghdadkglajkgam"
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
+class User(UserMixin):
+  def __init__(self,id):
+    self.id = id
+
+
+
 CORS(app)
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
+
+
 
 # @BuradaVivek Mail Configurations
 mail=Mail(app)
@@ -120,7 +134,6 @@ app.config['MAIL_PASSWORD'] = 'ababbaba@999'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-
 
 
 
@@ -152,11 +165,13 @@ def register_user(data):
 # @BuradaVivek Run Backend  http://127.0.0.1:5000/
 @app.route('/')
 def hello_world():
-    return session['username']
+    return render_template('index.html')
+
 
 
 # @BuradaVivek Resolve Search here
 from flask import request
+
 @app.route('/api/v1/search/<search>',methods=['GET'])
 def search(search):
 
@@ -178,7 +193,6 @@ def search(search):
 def login():
     if not request.json or not 'name' in request.json:
         abort(400)
-    text = "Hello"
     flag=0
     data={'username':request.json['name'],
         'pass':request.json['pass']
@@ -191,20 +205,27 @@ def login():
         print("------------USER NOT EXIST --------------------")
         flag = 0
     else:
-        session['username'] = data["username"]
-        print(session['username'])
         print("---------------USER EXISTS ---------------------")
         flag = 1
-
     if(flag==1):
+        user = User(data['username'])
+        login_user(user)
+        print(user.id)
         return make_response(jsonify(),200)
     else:
         return make_response(jsonify(),400)
 
+#
+#
+# #@BuradaVivek Login User
+# @app.route('/')
+# def landing():
+#     print(session['username'])
+#     return render_template('index.html')
+#
 
 
 # @BuradaVivek Register User
-
 @app.route('/api/v1/users/register', methods=['POST'])
 def add_user():
     if not request.json or not 'name' in request.json:
@@ -224,22 +245,28 @@ def add_user():
         flag = 1
 
     if(flag==0):
-        print("adding")
+        print("---------------------ADDING USER---------------------")
         register_user(data)
         return jsonify({}),201
     else:
         return jsonify(),400
 
-#
-# @app.route('/api/v1/users/logout',methods=['GET'])
-# def logout():
-#     if(session.pop('username', None)):
-#         return make_response(jsonify(),200)
-#     else:
-#         return make_response(jsonify(),400)
-#
+
+@app.route('/landing.html')
+def index():
+    print("----BAD-----",current_user.get_id())
+    return render_template('landing.html',user = current_user.get_id())
+
+
+
+@app.route('/api/v1/users/logout',methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    return make_response(jsonify(),200)
+
+
 
 
 if __name__ == '__main__':
-    app.secret_key = 'super secret key'
     app.run(debug=True)
